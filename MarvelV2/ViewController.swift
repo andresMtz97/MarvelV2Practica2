@@ -12,7 +12,9 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var favorites: UIBarButtonItem!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var attributionText: UIButton!
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var keyLoader = KeyLoader.shared
     var characterManager: CharacterServiceManager?
 
@@ -32,6 +34,7 @@ class ViewController: UIViewController {
                 print("Completion executed!!")
                 self.collectionView.reloadData()
                 self.characterManager?.offset = (self.characterManager?.countCharacter())!
+                self.attributionText.setTitle(self.characterManager?.attributionText, for: .normal)
             }
         }
     }
@@ -48,6 +51,17 @@ class ViewController: UIViewController {
     
     @IBAction func favoritesTapped(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "favoritesSegue", sender: self)
+    }
+    
+    
+    @IBAction func attributionTextTapped(_ sender: UIButton) {
+        if appDelegate.internetStatus {
+            if let url = URL(string: "http://marvel.com") {
+                UIApplication.shared.open(url)
+            }
+        } else {
+            print("Sin conexión a internet")
+        }
     }
 }
 

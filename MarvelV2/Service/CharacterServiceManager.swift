@@ -15,6 +15,7 @@ class CharacterServiceManager {
     var maxItemLoaded = false
     var isLoading = false
     let session = URLSession(configuration: .default)
+    var attributionText: String = ""
         
     func countCharacter() -> Int{
         return characters.count
@@ -60,7 +61,8 @@ class CharacterServiceManager {
                 self.limit = decodedResponse.data.limit
                 self.offset = decodedResponse.data.offset
                 self.total = decodedResponse.data.total
-                
+                self.attributionText = decodedResponse.attributionText
+                                
                 for character in loadedCharacters {
                     self.characters.append(character)
                 }

@@ -12,6 +12,7 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var favorites: UIBarButtonItem!
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var character: Character?
     var favorite = false
@@ -20,6 +21,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var favButton: UIBarButtonItem!
+    @IBOutlet weak var urlBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +43,9 @@ class DetailViewController: UIViewController {
             }
             thumbnail.sd_setImage(with: URL(string: marvelCharacter.thumbnail.url))
             
-            print(marvelCharacter.name)
+            if let countUrls = character?.urls.count {
+                urlBtn.setTitle(character?.urls[countUrls - 1].url, for: .normal)
+            }
         }
     }
     
@@ -60,6 +64,16 @@ class DetailViewController: UIViewController {
             }
             
             favButton.image = UIImage(systemName: "star.fill")
+        }
+    }
+    
+    @IBAction func urlTapped(_ sender: UIButton) {
+        if appDelegate.internetStatus {
+            if let url = URL(string: sender.title(for: .normal) ?? "") {
+                UIApplication.shared.open(url)
+            }
+        } else {
+            print("Sin conexión a internet")
         }
     }
     

@@ -7,14 +7,25 @@
 
 import UIKit
 import CoreData
+import Network
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var internetStatus = false
+    let monitor = NWPathMonitor()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //Add code to detect network connection
+        monitor.start(queue:DispatchQueue.global(qos: .default))
+        monitor.pathUpdateHandler = { path in
+            if path.status == .satisfied {
+                self.internetStatus = true
+            }
+        }
+        
         return true
     }
 

@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kFT-RM-RW6">
-                                <rect key="frame" x="16" y="103" width="361" height="715"/>
+                                <rect key="frame" x="16" y="103" width="361" height="667"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cEc-u8-O5E">
                                     <size key="itemSize" width="128" height="128"/>
@@ -66,14 +66,28 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6r-BF-gDN">
+                                <rect key="frame" x="0.0" y="778" width="393" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="64w-TZ-qky"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <action selector="attributionTextTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LOJ-Xw-QLP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="V6r-BF-gDN" secondAttribute="trailing" id="2eE-vt-6by"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kFT-RM-RW6" secondAttribute="trailing" constant="16" id="33I-fN-SI7"/>
                             <constraint firstItem="kFT-RM-RW6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="AMB-A5-98I"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="kFT-RM-RW6" secondAttribute="bottom" id="KLG-MK-FmO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="V6r-BF-gDN" secondAttribute="bottom" id="KQ9-UL-QnS"/>
+                            <constraint firstItem="V6r-BF-gDN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TXH-nn-vnd"/>
                             <constraint firstItem="kFT-RM-RW6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Vb6-ug-w3w"/>
+                            <constraint firstItem="V6r-BF-gDN" firstAttribute="top" secondItem="kFT-RM-RW6" secondAttribute="bottom" constant="8" id="d1F-g8-GaH"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wfR-PU-gpy">
@@ -84,6 +98,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="attributionText" destination="V6r-BF-gDN" id="Tzf-id-QXn"/>
                         <outlet property="collectionView" destination="kFT-RM-RW6" id="IvT-pn-gBp"/>
                         <outlet property="favorites" destination="0pI-3T-4c0" id="Jgm-mS-Oq8"/>
                         <segue destination="7gw-rL-MFA" kind="show" identifier="detailSegue" id="6yI-I6-Hm8"/>
@@ -92,7 +107,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1057.2519083969464" y="-27.464788732394368"/>
+            <point key="canvasLocation" x="1055.7251908396945" y="-27.464788732394368"/>
         </scene>
         <!--Favorites View Controller-->
         <scene sceneID="npN-xM-Pxp">
@@ -202,13 +217,27 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VcX-iu-0s4">
+                                <rect key="frame" x="0.0" y="522.33333333333337" width="393" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="100" id="9UP-kR-F4N"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <action selector="urlTapped:" destination="7gw-rL-MFA" eventType="touchUpInside" id="bC4-8c-kyO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6nj-LQ-bWj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="UFl-av-IF9" firstAttribute="leading" secondItem="6nj-LQ-bWj" secondAttribute="leading" constant="48" id="9SF-qi-hPt"/>
                             <constraint firstItem="6nj-LQ-bWj" firstAttribute="trailing" secondItem="UFl-av-IF9" secondAttribute="trailing" constant="48" id="CAw-Pz-7fk"/>
+                            <constraint firstItem="6nj-LQ-bWj" firstAttribute="trailing" secondItem="VcX-iu-0s4" secondAttribute="trailing" id="IHV-Mf-f3g"/>
+                            <constraint firstItem="VcX-iu-0s4" firstAttribute="leading" secondItem="6nj-LQ-bWj" secondAttribute="leading" id="QZd-8o-0Od"/>
                             <constraint firstItem="6nj-LQ-bWj" firstAttribute="trailing" secondItem="isR-Od-x9m" secondAttribute="trailing" constant="16" id="RIy-nY-AWT"/>
+                            <constraint firstItem="VcX-iu-0s4" firstAttribute="top" secondItem="M2q-Eh-wYQ" secondAttribute="bottom" constant="32" id="bWU-5t-IOb"/>
                             <constraint firstItem="isR-Od-x9m" firstAttribute="leading" secondItem="6nj-LQ-bWj" secondAttribute="leading" constant="16" id="ekZ-UH-l0A"/>
                             <constraint firstItem="UFl-av-IF9" firstAttribute="top" secondItem="isR-Od-x9m" secondAttribute="bottom" constant="16" id="kn7-wf-LaD"/>
                             <constraint firstItem="6nj-LQ-bWj" firstAttribute="trailing" secondItem="M2q-Eh-wYQ" secondAttribute="trailing" constant="16" id="nhJ-dL-EDR"/>
@@ -230,6 +259,7 @@
                         <outlet property="favorites" destination="0vN-ts-ygP" id="iT1-rT-eY4"/>
                         <outlet property="name" destination="UFl-av-IF9" id="fx5-FQ-UIM"/>
                         <outlet property="thumbnail" destination="isR-Od-x9m" id="viR-qV-1KR"/>
+                        <outlet property="urlBtn" destination="VcX-iu-0s4" id="TZL-pX-SqX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LNC-CM-xEI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
